@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Narayan Mandal | Python Fullstack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="style .css">
+</head>
+<body>
+<!-- nav bar -->
+<div class="nav-band">
+  <nav>
+    <a class="logo" href="#home">Narayan<b>.</b>dev</a>
+    <button class="menu" id="menu" aria-label="Open menu" aria-expanded="false" type="button">☰</button>
+    <ul id="links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact Me</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="wrap">
+  <header class="hero" id="home">
+    <div>
+      <span class="pill"><i></i> Fresher · Open to work</span>
+      <h1>Hi, I'm <span class="grad">Narayan Mandal</span></h1>
+      <p class="role">I am a passionate <span id="element">Python Fullstack Developer</span></p>
+      <p class="sub">I build complete web applications with HTML, CSS, JavaScript, SQL and Django. I am looking for my first role where I can learn fast and ship real features.</p>
+      <div class="cta">
+        <a class="btn fill" href="#projects">View my projects</a>
+        <a class="btn" href="#contact">Hire me</a>
+        <a class="btn" href="#" id="resume">Download resume</a>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/narayanyadav66?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <!-- developer model -->
+    <div class="code" aria-label="Django model example">
+      <div class="code-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span>developer/models.py</span></div>
+<pre><span class="kw">class</span> <span class="fn">Developer</span>(models.Model):
+    name   = models.CharField(<span class="st">"Narayan Mandal"</span>)
+    role   = <span class="st">"Python Fullstack"</span>
+    stack  = [<span class="st">"HTML"</span>, <span class="st">"CSS"</span>, <span class="st">"JS"</span>,
+              <span class="st">"SQL"</span>, <span class="st">"Django"</span>]
+
+    <span class="kw">def</span> <span class="fn">build</span>(self, idea):
+        <span class="cm"># model → view → template</span>
+        <span class="kw">return</span> idea.deploy()</pre>
+    </div>
+  </header>
+
+  <!--quick facts  -->
+
+  <div class="stats" aria-label="Quick facts">
+    <div class="stat"><b>3</b><span>Projects built</span></div>
+    <div class="stat"><b>6</b><span>Core technologies</span></div>
+    <div class="stat"><b>Full stack</b><span>DB to browser</span></div>
+    <div class="stat"><b>Fresher</b><span>Ready to join</span></div>
+  </div>
+
+  <!-- about section -->
+
+  <section id="about">
+    <span class="eyebrow">About me</span>
+    <h2>A fresher who builds, not just studies</h2>
+    <div class="about">
+      <div>
+        <p>I am a Python full stack web developer. I enjoy turning an idea into a working app: designing the tables, writing the Django views and shaping the pages people use.</p>
+        <p>Replace this paragraph with two or three lines about your college, what pushed you into web development and the kind of team you want to join.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Name</dt><dd>Narayan Mandal</dd></div>
+        <div><dt>Role</dt><dd>Python Fullstack Developer</dd></div>
+        <div><dt>Status</dt><dd>Fresher, open to work</dd></div>
+        <div><dt>Location</dt><dd>West-Bengal, India</dd></div>
+      </dl>
+    </div>
+  </section>
+<!-- skill  -->
+  <section id="skills">
+    <span class="eyebrow">What I have learned</span>
+    <h2>Hands-on experience</h2>
+    <p class="intro">Adjust the bars to match how confident you feel. Honest levels are better than full bars.</p>
+    <div class="skill-groups">
+      <div class="group">
+        <h3>Frontend</h3>
+        <div class="bar-row"><div class="bar-top">HTML <span>Strong</span></div><div class="track"><div class="fill-bar" style="--w:90%"></div></div></div>
+        <div class="bar-row"><div class="bar-top">CSS <span>Strong</span></div><div class="track"><div class="fill-bar" style="--w:85%"></div></div></div>
+        <div class="bar-row"><div class="bar-top">JavaScript <span>Good</span></div><div class="track"><div class="fill-bar" style="--w:70%"></div></div></div>
+      </div>
+      <div class="group">
+        <h3>Backend and database</h3>
+        <div class="bar-row"><div class="bar-top">Python <span>Strong</span></div><div class="track"><div class="fill-bar" style="--w:85%"></div></div></div>
+        <div class="bar-row"><div class="bar-top">Django <span>Good</span></div><div class="track"><div class="fill-bar" style="--w:75%"></div></div></div>
+        <div class="bar-row"><div class="bar-top">SQL <span>Good</span></div><div class="track"><div class="fill-bar" style="--w:75%"></div></div></div>
+      </div>
+    </div>
+    <ul class="chips" aria-label="Also learning">
+      <li>Git and GitHub</li><li>VS Code</li><li>REST APIs</li><li>Django admin</li><li>Responsive design</li>
+    </ul>
+  </section>
+  <!-- project section -->
+
+  <section id="projects">
+    <span class="eyebrow">My work</span>
+    <h2>Projects</h2>
+    <p class="intro">Three project slots. Replace the titles, descriptions, tags and links with your own.</p>
+    <div class="projects">
+      <!-- project 1 -->
+      <article class="project">
+        <div class="thumb">Project 1 screenshot</div>
+        <div class="pbody">
+          <span class="tag">Project 1</span>
+          <h3>Project title</h3>
+          <p>What you built, who it is for and your part in it. Mention one problem you solved.</p>
+          <ul class="stack"><li>Django</li><li>SQL</li><li>JavaScript</li></ul>
+          <div class="links"><a href="#projects">Live demo ↗</a><a href="#projects">Source code ↗</a></div>
+        </div>
+      </article>
+      <!-- project 3 -->
+      <article class="project">
+        <div class="thumb">Project 2 screenshot</div>
+        <div class="pbody">
+          <span class="tag">Project 2</span>
+          <h3>Project title</h3>
+          <p>What you built, who it is for and your part in it. Mention one problem you solved.</p>
+          <ul class="stack"><li>Python</li><li>HTML</li><li>CSS</li></ul>
+          <div class="links"><a href="#projects">Live demo ↗</a><a href="#projects">Source code ↗</a></div>
+        </div>
+      </article>
+      <!-- project 3 -->
+      <article class="project">
+        <div class="thumb">Project 3 screenshot</div>
+        <div class="pbody">
+          <span class="tag">Project 3</span>
+          <h3>Project title</h3>
+          <p>What you built, who it is for and your part in it. Mention one problem you solved.</p>
+          <ul class="stack"><li>Django</li><li>SQL</li><li>CSS</li></ul>
+          <div class="links"><a href="#projects">Live demo ↗</a><a href="#projects">Source code ↗</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+  
+  <!-- education baground -->
+
+  <section id="education">
+    <span class="eyebrow">Background</span>
+    <h2>Education and learning</h2>
+    <div class="timeline"><div class="tl"><small>2022 – 2026</small><h3>B.Tech in Electronics & Communication Engineering</h3><p>Asansol Engineering College, MAKAUT. Studied programming, embedded systems, and computer fundamentals, with a focus on Python, web development, databases, and software development.</p></div>
+      
+      <div class="tl">
+    <small>2026</small>
+    <h3>Python Full Stack Development</h3>
+    <p>Learning Python, HTML, CSS, JavaScript, Django, SQL, and database management at QSpiders, South Kolkata, with a focus on web development and practical programming skills.</p>
+</div>
+
+<div class="tl">
+    <small>Academic Achievement</small>
+    <h3>2nd Place - Model Making Competition</h3>
+    <p>Secured second place in a model-making competition by contributing to project development, coding, and teamwork.</p>
+</div>
+    </div>
+  </section>
+
+  <section id="services">
+    <span class="eyebrow">What I offer</span>
+    <h2>Services</h2>
+    <div class="services">
+      <div class="service"><h3>Full stack web apps</h3><p>End-to-end builds with database, backend, templates and a responsive front end.</p></div>
+      <div class="service"><h3>Django backends</h3><p>Models, views, forms, user login and admin panels for your product.</p></div>
+      <div class="service"><h3>Database design</h3><p>Tables, relations and SQL queries that stay fast and easy to maintain.</p></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <span class="eyebrow">Say hello</span>
+    <h2>Contact me</h2>
+    <div class="contact-card">
+      <div>
+        <h3>Let's build something together</h3>
+        <p>I am open to internships, junior developer roles and freelance work. Send me a message.</p>
+      </div>
+      <div class="mail">
+        <code id="email">your-email@example.com</code>
+        <button class="btn fill" type="button" id="copy">Copy email</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <span>© 2026 Narayan Mandal. All rights reserved.</span>
+  <span>Built with HTML, CSS and JavaScript</span>
+</footer>
+<a class="top" href="#home" aria-label="Back to top">↑</a>
+
+  <script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>

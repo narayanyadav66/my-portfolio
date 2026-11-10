@@ -1,34 +1,93 @@
-try {
-  if (window.Typed && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.getElementById('element').textContent = '';
-    new Typed('#element', { strings: ['Web Developer', 'Fullstack Developer', 'Python Developer'], typeSpeed: 50, backSpeed: 30, backDelay: 1400, loop: true });
-  }
-} catch (e) {}
+(() => {
+  "use strict";
 
-var menu = document.getElementById('menu'), links = document.getElementById('links');
-menu.addEventListener('click', function () {
-  var open = links.classList.toggle('open');
-  menu.setAttribute('aria-expanded', open);
-});
-links.addEventListener('click', function (e) { if (e.target.tagName === 'A') { links.classList.remove('open'); menu.setAttribute('aria-expanded', false); } });
+  const menuButton = document.getElementById("menu");
+  const navLinks = document.getElementById("links");
 
-var navLinks = Array.prototype.slice.call(document.querySelectorAll('#links a'));
-if ('IntersectionObserver' in window) {
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) {
-        navLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
+  // Accessible mobile navigation
+  if (menuButton && navLinks) {
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+    });
+
+    navLinks.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
       }
     });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  document.querySelectorAll('header[id], section[id]').forEach(function (s) { io.observe(s); });
-}
 
-document.getElementById('resume').addEventListener('click', function (e) { e.preventDefault(); });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && navLinks.classList.contains("open")) {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.focus();
+      }
+    });
+  }
 
-document.getElementById('copy').addEventListener('click', function () {
-  var btn = this, el = document.getElementById('email');
-  function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy email'; }, 1500); }
-  function fallback() { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
-  try { navigator.clipboard.writeText(el.textContent).then(done, fallback); } catch (e) { fallback(); }
-});
+  // Highlight the navigation item for the section in view
+  const sections = document.querySelectorAll("header[id], section[id]");
+  const links = Array.from(document.querySelectorAll("#links a"));
+
+  if ("IntersectionObserver" in window && sections.length && links.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((link) => {
+          const active = link.getAttribute("href") === `#${entry.target.id}`;
+          link.classList.toggle("active", active);
+          if (active) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        });
+      });
+    }, { rootMargin: "-35% 0px -55% 0px", threshold: 0 });
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  // Copy email address with a fallback for browsers without Clipboard API access
+  const copyButton = document.getElementById("copy-email");
+  const copyStatus = document.getElementById("copy-status");
+
+  if (copyButton) {
+    copyButton.addEventListener("click", async () => {
+      const email = copyButton.dataset.email;
+      if (!email) return;
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(email);
+        } else {
+          const temporaryInput = document.createElement("textarea");
+          temporaryInput.value = email;
+          temporaryInput.setAttribute("readonly", "");
+          temporaryInput.style.position = "absolute";
+          temporaryInput.style.left = "-9999px";
+          document.body.appendChild(temporaryInput);
+          temporaryInput.select();
+          const copied = document.execCommand("copy");
+          temporaryInput.remove();
+          if (!copied) throw new Error("Copy command was not successful");
+        }
+
+        copyStatus.textContent = "Email copied to clipboard.";
+        copyButton.textContent = "Copied!";
+      } catch (error) {
+        copyStatus.textContent = "Copy failed. Please use the email link instead.";
+      }
+
+      window.setTimeout(() => {
+        copyButton.textContent = "Copy email";
+        if (copyStatus) copyStatus.textContent = "";
+      }, 2500);
+    });
+  }
+
+  // Keep the footer year current
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+})();
